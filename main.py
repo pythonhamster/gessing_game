@@ -13,6 +13,7 @@ def load(filename):
         return countries
 
 
+guesses = 0
 load("countries.txt")
 country = random.choice(countries)
 present_list = ["_"] * len(country)
@@ -24,6 +25,7 @@ while True:
             if guess in country:
                 for i in country:
                     if i == guess:
+                        guesses += 1
                         index = country.find(guess)
                         present_list[index] = guess
                         country = country.replace(i, "!", 1)
@@ -31,11 +33,12 @@ while True:
                 print("you have already guessed this letter, try again.")
             else:
                 print("wrong guess")
+                guesses += 1
         else:
             print("letters only!")
     else:
         print("you have entered to many letters")
     if "_" not in present_list:
         win = "".join(present_list)
-        print(f"YAY!!! {win.upper()} You won the game!!")
+        print(f"YAY!!! {win.upper()} You won the game!!it took you {guesses} guesses!")
         break
