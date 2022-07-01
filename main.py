@@ -36,5 +36,6 @@ while True:
     else:
         print("you have entered to many letters")
     if "_" not in present_list:
-            print("YAY!!! You won the game!!")
-            break
+        win = "".join(present_list)
+        print(f"YAY!!! {win.upper()} You won the game!!")
+        break
